@@ -1,0 +1,15 @@
+:root {
+  --custome-bg-color: yellow;
+}
+
+
+.my-style {
+  background-color: var(--custome-bg-color); /* Custome Propertyを使用 */
+  color: blue;
+  font-weight: bold;
+}
+
+
+:fullscreen a { /* PostCSSによりベンダープリフィックスが展開される */
+  display: flex
+}

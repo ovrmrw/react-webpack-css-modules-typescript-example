@@ -1,0 +1,25 @@
+{
+  "transform": {
+    "\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+  },
+  "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|js)$",
+  "moduleFileExtensions": [
+    "ts",
+    "tsx",
+    "js",
+    "json"
+  ],
+  "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+  "testPathDirs": [
+    "<rootDir>/src/"
+  ],
+  "testPathIgnorePatterns": [
+    "<rootDir>/node_modules/",
+    "<rootDir>/dist/",
+    "<rootDir>/public/"
+  ],
+  "moduleNameMapper": {
+    "\\.css$": "identity-obj-proxy"
+  },
+  "verbose": true
+}

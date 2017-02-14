@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "module": "es2015",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "lib": [
+      "dom",
+      "es2017"
+    ],
+    "jsx": "preserve",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "outDir": ".dest-tsc"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

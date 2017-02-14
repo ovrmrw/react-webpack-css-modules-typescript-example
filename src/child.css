@@ -1,0 +1,9 @@
+:root {
+  --custome-bg-color: orange;
+}
+
+
+.my-style {
+  composes: my-style from './app.css'; /* app.cssの.my-styleを継承 */
+  background-color: var(--custome-bg-color); /* Custome Propertyを使用 */
+}
