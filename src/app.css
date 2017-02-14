@@ -4,12 +4,12 @@
 
 
 .my-style {
-  background-color: var(--custome-bg-color); /* Custome Propertyを使用 */
+  background-color: var(--custome-bg-color); /* using Custome Property */
   color: blue;
   font-weight: bold;
 }
 
 
-:fullscreen a { /* PostCSSによりベンダープリフィックスが展開される */
+:fullscreen a { /* expanding vender prefixes by postcss-cssnext */
   display: flex
 }

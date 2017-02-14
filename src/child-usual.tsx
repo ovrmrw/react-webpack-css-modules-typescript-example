@@ -6,8 +6,8 @@ const styles = require('./child.css')
 
 export class ChildUsual extends React.Component<{}, {}>{
   render() {
-    console.log('child-usual props:', this.props)
-    console.log('child-usual state:', this.state)
+    console.log('child-usual props:', this.props) // {} (empty object)
+    console.log('child-usual state:', this.state) // null
     return (
       <div>
         <div className={styles['my-style']}>

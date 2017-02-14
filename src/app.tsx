@@ -8,8 +8,8 @@ import { ChildUsual } from './child-usual'
 
 export class App extends React.Component<{}, {}>{
   render() {
-    console.log('app props:', this.props)
-    console.log('app state:', this.state)
+    console.log('app props:', this.props) // {} (empty object)
+    console.log('app state:', this.state) // null
     return (
       <div>
         <div styleName="my-style">

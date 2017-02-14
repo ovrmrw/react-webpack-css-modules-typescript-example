@@ -4,6 +4,6 @@
 
 
 .my-style {
-  composes: my-style from './app.css'; /* app.cssの.my-styleを継承 */
-  background-color: var(--custome-bg-color); /* Custome Propertyを使用 */
+  composes: my-style from './app.css'; /* extending .my-style from app.css */
+  background-color: var(--custome-bg-color); /* using Custome Property */
 }

@@ -8,7 +8,7 @@ export class Root extends React.Component<{}, {}>{
     return (
       <div>
         <div className="my-style">
-          root text
+          root text {/* no css attached */}
         </div>
         <App />
       </div>

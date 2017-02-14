@@ -5,8 +5,8 @@ import './child.css'
 
 export class Child extends React.Component<{}, {}>{
   render() {
-    console.log('child props:', this.props)
-    console.log('child state:', this.state)
+    console.log('child props:', this.props) // {} (empty object)
+    console.log('child state:', this.state) // null
     return (
       <div>
         <div styleName="my-style">
