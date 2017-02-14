@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 // import './child.css'
-const styles = require('./child.css')
+import * as styles from './child.css'
 
 
 export class ChildUsual extends React.Component<{}, {}>{

@@ -22,5 +22,8 @@
   "moduleNameMapper": {
     "\\.css$": "identity-obj-proxy"
   },
-  "verbose": true
+  "verbose": true,
+  "globals": {
+    "__TS_CONFIG__": "<rootDir>/src/__tests__/tsconfig.json"
+  }
 }
