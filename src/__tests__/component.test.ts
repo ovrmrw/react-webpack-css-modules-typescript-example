@@ -6,8 +6,7 @@ import { App } from '../app'
 import { Child } from '../child'
 import { ChildUsual } from '../child-usual'
 
-import * as appStyles from '../app.css'
-import * as childStyles from '../child.css'
+import * as dummyStyles from './dummy.css'
 
 
 test('App can initialize', () => {
@@ -16,7 +15,7 @@ test('App can initialize', () => {
 })
 
 test('App text has class', () => {
-  const wrapper = shallowCSSModulesRenderer(App, appStyles)
+  const wrapper = shallow(decoratedElement(App))
   expect(wrapper.find('#app-text').hasClass('my-style')).toBe(true)
 })
 
@@ -26,7 +25,7 @@ test('Child can initialize', () => {
 })
 
 test('Child text has class', () => {
-  const wrapper = shallowCSSModulesRenderer(Child, childStyles)
+  const wrapper = shallow(decoratedElement(Child))
   expect(wrapper.find('#child-text').hasClass('my-style')).toBe(true)
 })
 
@@ -36,16 +35,12 @@ test('ChildUsual can initialize', () => {
 })
 
 test('ChildUsual text has class', () => {
-  const wrapper = shallowCSSModulesRenderer(ChildUsual)
+  const wrapper = shallow(decoratedElement(ChildUsual))
   expect(wrapper.find('#child-usual-text').hasClass('my-style')).toBe(true)
 })
 
 
 
-function shallowCSSModulesRenderer<T, U>(component: any, styles?: any): ShallowWrapper<T, U> {
-  if (styles) {
-    return shallow(React.createElement(CSSModules(component, styles))) as any
-  } else {
-    return shallow(React.createElement(component)) as any
-  }
+function decoratedElement(component: typeof React.Component): React.ComponentElement<any, any> {
+  return React.createElement(CSSModules(component, dummyStyles, { allowMultiple: true }))
 }
