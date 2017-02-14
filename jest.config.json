@@ -16,7 +16,8 @@
   "testPathIgnorePatterns": [
     "<rootDir>/node_modules/",
     "<rootDir>/dist/",
-    "<rootDir>/public/"
+    "<rootDir>/public/",
+    "<rootDir>/config/"
   ],
   "moduleNameMapper": {
     "\\.css$": "identity-obj-proxy"

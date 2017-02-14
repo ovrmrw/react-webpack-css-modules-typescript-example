@@ -12,9 +12,10 @@ module.exports = function (env = {}) {
   let outputFilename
   let plugins = []
   let moduleRules = []
+  let cssModulesScopedName = '[path]___[name]__[local]___[hash:base64:5]'
 
   ////////////////////////////////////// output.filename
-  outputFilename = env.production ? 'static/js/bundle.[hash].js' : 'static/js/[name].js'
+  outputFilename = env.production ? 'static/js/bundle.[chunkhash].js' : 'static/js/[name].js'
 
   ////////////////////////////////////// plugins
   plugins.push(
@@ -30,7 +31,7 @@ module.exports = function (env = {}) {
       new CompressionWebpackPlugin({
         test: /\.js$/
       }),
-      new ExtractTextPlugin('static/css/bundle.[hash].css')
+      new ExtractTextPlugin('static/css/bundle.[chunkhash].css')
     )
   } else {
     // development
@@ -57,7 +58,7 @@ module.exports = function (env = {}) {
               [],
             plugins: [
               'transform-react-jsx',
-              'react-css-modules',
+              ['react-css-modules', { generateScopedName: cssModulesScopedName }],
             ]
           }
         },
@@ -77,7 +78,7 @@ module.exports = function (env = {}) {
                 modules: true,
                 importLoaders: 1,
                 sourceMap: true,
-                localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+                localIdentName: cssModulesScopedName,
               }
             },
             'postcss-loader',
@@ -91,7 +92,7 @@ module.exports = function (env = {}) {
               modules: true,
               importLoaders: 1,
               sourceMap: true,
-              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+              localIdentName: cssModulesScopedName,
             }
           },
           'postcss-loader',
@@ -101,7 +102,7 @@ module.exports = function (env = {}) {
 
 
   return {
-    performance: false,
+    context,
     entry: env.production ?
       // production
       ['./config/polyfills.ts', './src/index.ts'] :
@@ -124,6 +125,7 @@ module.exports = function (env = {}) {
     },
     plugins,
     devtool: 'source-map',
+    performance: false,
   }
 
 }
