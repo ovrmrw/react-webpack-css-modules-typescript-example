@@ -1,10 +1,10 @@
 :root {
-  --custome-bg-color: yellow;
+  --custom-bg-color: yellow;
 }
 
 
 .my-style {
-  background-color: var(--custome-bg-color); /* using Custome Property */
+  background-color: var(--custom-bg-color); /* using Custom Property */
   color: blue;
   font-weight: bold;
 }
