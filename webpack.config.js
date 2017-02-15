@@ -9,13 +9,29 @@ module.exports = function (env = {}) {
   console.log('env:', env)
 
   let context = process.cwd()
+  let cssModulesScopedName = '[path]___[name]__[local]___[hash:base64:5]'
+  let entry
   let outputFilename
   let plugins = []
   let moduleRules = []
-  let cssModulesScopedName = '[path]___[name]__[local]___[hash:base64:5]'
+
+  ////////////////////////////////////// entry
+  entry = env.production ?
+    // production
+    ['./config/polyfills.ts', './src/index.ts'] :
+    // development
+    {
+      main: './src/index.ts',
+      vendor: './config/vendor.ts',
+      polyfills: './config/polyfills.ts',
+    }
 
   ////////////////////////////////////// output.filename
-  outputFilename = env.production ? 'static/js/bundle.[chunkhash].js' : 'static/js/[name].js'
+  outputFilename = env.production ?
+    // production
+    'static/js/bundle.[chunkhash].js' :
+    // development
+    'static/js/[name].js'
 
   ////////////////////////////////////// plugins
   plugins.push(
@@ -103,16 +119,7 @@ module.exports = function (env = {}) {
 
   return {
     context,
-    entry: env.production ?
-      // production
-      ['./config/polyfills.ts', './src/index.ts'] :
-      // development
-      {
-        main: './src/index.ts',
-        vendor: './config/vendor.ts',
-        polyfills: './config/polyfills.ts',
-      }
-    ,
+    entry,
     output: {
       filename: outputFilename,
       path: 'dist'
