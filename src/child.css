@@ -1,4 +1,4 @@
-@value appModule: "./app.css";
+@value appModule: "./app.css"; /* importing .app/css */
 
 :root {
   --custom-bg-color: orange;

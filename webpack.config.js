@@ -8,15 +8,16 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = function (env = {}) {
   console.log('env:', env)
 
-  let context = process.cwd()
-  let cssModulesScopedName = '[path]___[name]__[local]___[hash:base64:5]'
+  const isProduction = !!env.production
+  const context = process.cwd()
+  const cssModulesScopedName = '[path]___[name]__[local]___[hash:base64:5]'
   let entry
   let outputFilename
   let plugins = []
   let moduleRules = []
 
   ////////////////////////////////////// entry
-  entry = env.production ?
+  entry = isProduction ?
     // production
     ['./config/polyfills.ts', './src/index.ts'] :
     // development
@@ -27,7 +28,7 @@ module.exports = function (env = {}) {
     }
 
   ////////////////////////////////////// output.filename
-  outputFilename = env.production ?
+  outputFilename = isProduction ?
     // production
     'static/js/bundle.[chunkhash].js' :
     // development
@@ -41,7 +42,7 @@ module.exports = function (env = {}) {
     })
   )
 
-  if (env.production) {
+  if (isProduction) {
     // production
     plugins.push(
       new CompressionWebpackPlugin({
@@ -67,7 +68,7 @@ module.exports = function (env = {}) {
         {
           loader: 'babel-loader',
           options: {
-            presets: env.production ?
+            presets: isProduction ?
               // production
               ['latest'] :
               // development
@@ -83,7 +84,7 @@ module.exports = function (env = {}) {
     },
     {
       test: /\.css$/,
-      use: env.production ?
+      use: isProduction ?
         // production
         ExtractTextPlugin.extract({
           fallback: 'style-loader',
