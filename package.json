@@ -16,7 +16,7 @@
     "build:p": "run-s clean copy webpack:p",
     "serve": "lite-server",
     "start": "run-s clean copy && run-p copy:w webpack:w serve",
-    "deploy": "npm run build:p && gh-pages -d dist"
+    "deploy": "npm run build:p && rimraf node_modules/gh-pages/.cache && gh-pages -d dist"
   },
   "homepage": "https://ovrmrw.github.io/react-webpack-css-modules-typescript-example",
   "keywords": [],
